@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const records = require('./src/controller/records');
 const themes = require('./src/controller/themes');
@@ -16,6 +17,7 @@ mongoose.connect(process.env.CONNECDATABASE ,{ useNewUrlParser: true,  useUnifie
     })
     .catch(e => console.log(e));
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
