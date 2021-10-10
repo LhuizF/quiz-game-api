@@ -7,7 +7,7 @@ const records = require('./src/controller/records');
 const themes = require('./src/controller/themes');
 
 const app = express();
-const port = 5000;
+const port = process.env.APPPORT;
 
 mongoose.connect(process.env.CONNECDATABASE ,{ useNewUrlParser: true,  useUnifiedTopology: true })
     .then(() =>{
@@ -17,6 +17,10 @@ mongoose.connect(process.env.CONNECDATABASE ,{ useNewUrlParser: true,  useUnifie
     .catch(e => console.log(e));
 
 app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.json('index');
+})
 
 app.get('/records', records.index);
 app.post('/records', records.create);
