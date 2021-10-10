@@ -28,7 +28,7 @@ app.post('/records', records.create);
 app.get('/themes', themes.index);
 
 app.on('okay', () => {
-    app.listen(port, () => {
+    app.listen(process.env.PORT || 3000, () => {
         console.log(`Host: http://localhost:${port}`);
         console.log('Servidor Online');
     });
