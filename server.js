@@ -17,7 +17,11 @@ mongoose.connect(process.env.CONNECDATABASE ,{ useNewUrlParser: true,  useUnifie
     })
     .catch(e => console.log(e));
 
-app.use(cors());
+app.use(cors({
+    origin : ['https://lhuizf.github.io/Quiz-Game-React/', 'http://localhost:3000'],
+    optionsSuccessStatus: 200
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -30,7 +34,7 @@ app.post('/records', records.create);
 app.get('/themes', themes.index);
 
 app.on('okay', () => {
-    app.listen(process.env.PORT || 3000, () => {
+    app.listen(process.env.PORT || port, () => {
         console.log(`Host: http://localhost:${port}`);
         console.log('Servidor Online');
     });

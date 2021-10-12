@@ -4,7 +4,7 @@ module.exports = {
     async index(req, res) {
         try {
             const records = await Record.find();
-            return res.status(200).json({ records });
+            return res.status(200).json(records);
         } catch (e) {
             console.log(e);
             return res.status(500).json({
