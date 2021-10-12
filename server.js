@@ -17,7 +17,7 @@ mongoose.connect(process.env.CONNECDATABASE ,{ useNewUrlParser: true,  useUnifie
     })
     .catch(e => console.log(e));
 
-const whiteList = ['https://lhuizf.github.io/Quiz-Game-React/', 'http://localhost:3000'];
+const whiteList = ['https://lhuizf.github.io', 'http://localhost:3000'];
 
 app.use(cors({
     origin: (origin, callback) => {
