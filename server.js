@@ -17,9 +17,16 @@ mongoose.connect(process.env.CONNECDATABASE ,{ useNewUrlParser: true,  useUnifie
     })
     .catch(e => console.log(e));
 
+const whiteList = ['https://lhuizf.github.io/Quiz-Game-React/', 'http://localhost:3000'];
+
 app.use(cors({
-    origin : ['https://lhuizf.github.io/Quiz-Game-React/', 'http://localhost:3000'],
-    optionsSuccessStatus: 200
+    origin: (origin, callback) => {
+        if(whiteList.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
 
 app.use(express.json());
