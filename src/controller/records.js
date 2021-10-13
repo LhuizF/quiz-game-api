@@ -34,7 +34,7 @@ module.exports = {
     async show(req, res) {
         try {
             const { theme } = req.params;
-            const records = await Record.find({theme});
+            const records = await Record.find({theme}).sort({score: -1});
             return res.status(200).json(records);
         } catch (e) {
             console.log(e);
