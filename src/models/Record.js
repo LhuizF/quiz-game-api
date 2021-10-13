@@ -11,12 +11,12 @@ const recordsSchema = new mongoose.Schema({
         type: String,
         default: () => {
             const now = new Date();
-            return `${now.toLocaleDateString()} ${now.toLocaleTimeString('pt-br', {
+            return `${now.toLocaleDateString()} ${now.toLocaleTimeString('pt-BR', {
                 timeStyle: 'short'
             })}`;            
         }
-    }
-});
+    }, 
+},  { versionKey: false });
 
 
 
