@@ -11,5 +11,19 @@ module.exports = {
                 error: e.message
             });
         }
+    },
+
+    async show(req, res) {
+        try{
+            const { theme } = req.params
+            const selectedTheme = await Themes.find({ path: theme })
+            return res.status(200).json(selectedTheme);
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json({
+                error: e.message
+            });
+        }
+        
     }
 };

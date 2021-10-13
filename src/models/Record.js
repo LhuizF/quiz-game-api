@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const recordsSchema = new mongoose.Schema({
     nick: { type: String, required: true },
     email: { type: String, required: false, default: '' },
-    theme: { type: String, required: true },
+    theme: { type: Array, required: true },
     hits: { type: String, required: true },
     time: { type: String, required: true },
     score: { type: Number, required: true },

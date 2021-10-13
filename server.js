@@ -4,9 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const records = require('./src/controller/records');
-const themes = require('./src/controller/themes');
-
+const routes = require('./routes');
 const app = express();
 const port = process.env.APPPORT;
 
@@ -35,10 +33,8 @@ app.get('/', (req, res) => {
     res.json('index');
 })
 
-app.get('/records', records.index);
-app.post('/records', records.create);
+app.use(routes)
 
-app.get('/themes', themes.index);
 
 app.on('okay', () => {
     app.listen(process.env.PORT || port, () => {
