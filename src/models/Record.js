@@ -11,7 +11,7 @@ const recordsSchema = new mongoose.Schema({
         type: String,
         default: () => {
             const now = new Date();
-            return `${now.toLocaleDateString()} ${now.toLocaleTimeString('pt-BR', {
+            return `${now.toLocaleDateString('pt-br')} ${now.toLocaleTimeString('pt-br', {
                 timeStyle: 'short'
             })}`;            
         }
