@@ -29,12 +29,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.json('index');
-})
-
 app.use(routes)
-
 
 app.on('okay', () => {
     app.listen(process.env.PORT || port, () => {

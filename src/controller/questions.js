@@ -1,6 +1,7 @@
 const Question = require('../models/Question');
 
 module.exports = {
+    // retorna todas as perguntas no banco de dado
     async index(req, res) {
         try {
             const questions = await Question.find().populate('theme');
@@ -13,11 +14,11 @@ module.exports = {
         }
     },
 
+    // criar pergunta
     async create(req, res) {
-        try{
-            
-            const questions = new Question(req.body);
-            await questions.save();
+        try{            
+            const question = new Question(req.body);
+            await question.save();
             return res.status(201).json({
                 message: 'Questão adicionado com sucesso.'
             });
@@ -30,6 +31,7 @@ module.exports = {
         }
     },
 
+    // retorna todas as perguntas de um tema especifico
     async show(req, res) {
         try {
             const { themeId }  = req.params;

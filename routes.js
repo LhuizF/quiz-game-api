@@ -5,9 +5,14 @@ const records = require('./src/controller/records');
 const themes = require('./src/controller/themes');
 const questions = require('./src/controller/questions');
 
+route.get('/', (req, res) => {
+    res.json('index');
+})
+
 route.get('/records', records.index);
 route.post('/records', records.create);
 route.get('/records/:theme', records.show);
+route.delete('/records/:id', records.delete);
 
 route.get('/themes', themes.index);
 route.get('/themes/:theme', themes.show);
